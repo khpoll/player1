@@ -6,5 +6,6 @@ int main()
 	foo2();
 	foo1();
 	foo2();
-	printf("!!!!\n");
+	printf("Yo!!\n");
+	foo1();
 }
