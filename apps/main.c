@@ -2,10 +2,10 @@
 int main()
 {
 	foo1();
-	printf("Yeah!\n");
+	printf("Yeah! boy~~\n");
 	foo2();
 	foo1();
 	foo2();
-	printf("Yo!!\n");
+	printf("Yo!! so sexy~\n");
 	foo1();
 }
