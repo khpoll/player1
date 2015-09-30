@@ -1,0 +1,133 @@
+[33mcommit 9993992815e0f41c364c5ce4c75e928c5655d81b[m
+Author: KH <rlagusdldi12@naver.com>
+Date:   Tue Sep 29 21:16:33 2015 -0700
+
+    new messages added
+
+[1mdiff --git a/apps/main.c b/apps/main.c[m
+[1mindex cd89ff1..d606a4a 100644[m
+[1m--- a/apps/main.c[m
+[1m+++ b/apps/main.c[m
+[36m@@ -1,5 +1,7 @@[m
+[32m+[m[32m#include <stdio.h>[m
+ int main()[m
+ {[m
+ 	foo1();[m
+[32m+[m	[32mprintf("Yeah!\n)";[m
+ 	foo2();[m
+ }[m
+
+[33mcommit e935d1dd9cac5bb6b646c32a5070ab3345a43a58[m
+Author: KH <rlagusdldi12@naver.com>
+Date:   Tue Sep 29 21:07:22 2015 -0700
+
+    my first commit
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..da78d12[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,5 @@[m
+[32m+[m[32m*.o[m
+[32m+[m[32m*.a[m
+[32m+[m[32m*.si.*[m
+[32m+[m[32m*.so[m
+[32m+[m[32mmain[m
+[1mdiff --git a/HW.tar.gz b/HW.tar.gz[m
+[1mnew file mode 100644[m
+[1mindex 0000000..526a153[m
+Binary files /dev/null and b/HW.tar.gz differ
+[1mdiff --git a/Makefile b/Makefile[m
+[1mnew file mode 100644[m
+[1mindex 0000000..97893fe[m
+[1m--- /dev/null[m
+[1m+++ b/Makefile[m
+[36m@@ -0,0 +1,14 @@[m
+[32m+[m[32mDIRS = lib apps[m
+[32m+[m[32m.PHONY: all clean[m
+[32m+[m
+[32m+[m[32mall:[m
+[32m+[m	[32m@for d in $(DIRS); \[m
+[32m+[m	[32mdo \[m
+[32m+[m		[32m$(MAKE) -C $$d; \[m
+[32m+[m	[32mdone[m
+[32m+[m
+[32m+[m[32mclean:[m
+[32m+[m	[32m@for d in $(DIRS); \[m
+[32m+[m	[32mdo \[m
+[32m+[m		[32m$(MAKE) -C $$d clean; \[m
+[32m+[m	[32mdone[m
+[1mdiff --git a/apps/Makefile b/apps/Makefile[m
+[1mnew file mode 100644[m
+[1mindex 0000000..86cdcf4[m
+[1m--- /dev/null[m
+[1m+++ b/apps/Makefile[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m%.o: %.c[m
+[32m+[m	[32mgcc -g -Wall -I/home/vaio/HW/include -c $< -o $@[m
+[32m+[m[32mmain:main.o[m
+[32m+[m	[32mgcc -o main -L/home/vaio/HW/lib main.o -lfuncs[m
+[32m+[m[32mclean:[m
+[32m+[m	[32mrm *.o main[m
+[1mdiff --git a/apps/main.c b/apps/main.c[m
+[1mnew file mode 100644[m
+[1mindex 0000000..cd89ff1[m
+[1m--- /dev/null[m
+[1m+++ b/apps/main.c[m
+[36m@@ -0,0 +1,5 @@[m
+[32m+[m[32mint main()[m
+[32m+[m[32m{[m
+[32m+[m	[32mfoo1();[m
+[32m+[m	[32mfoo2();[m
+[32m+[m[32m}[m
+[1mdiff --git a/include/func1.h b/include/func1.h[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f128c5d[m
+[1m--- /dev/null[m
+[1m+++ b/include/func1.h[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mextern foo1();[m
+[1mdiff --git a/include/func2.h b/include/func2.h[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fe62cc4[m
+[1m--- /dev/null[m
+[1m+++ b/include/func2.h[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mextern foo2();[m
+[1mdiff --git a/lib/Makefile b/lib/Makefile[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b87888f[m
+[1m--- /dev/null[m
+[1m+++ b/lib/Makefile[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m%.o: %.c[m
+[32m+[m	[32mgcc -g -Wall -I/home/vaio/HW/include -c $< -o $@[m
+[32m+[m[32mlibfuncs.a:func1.o func2.o[m
+[32m+[m	[32mar rv libfuncs.a func1.o func2.o[m
+[32m+[m[32mclean:[m
+[32m+[m	[32mrm *.o *.a[m
+[1mdiff --git a/lib/func1.c b/lib/func1.c[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a38b633[m
+[1m--- /dev/null[m
+[1m+++ b/lib/func1.c[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m#include <stdio.h>[m
+[32m+[m
+[32m+[m[32mvoid foo1()[m
+[32m+[m[32m{[m
+[32m+[m	[32mprintf("ONE!!\n");[m
+[32m+[m[32m}[m
+[1mdiff --git a/lib/func2.c b/lib/func2.c[m
+[1mnew file mode 100644[m
+[1mindex 0000000..32d5345[m
+[1m--- /dev/null[m
+[1m+++ b/lib/func2.c[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m#include <stdio.h>[m
+[32m+[m
+[32m+[m[32mvoid foo2()[m
+[32m+[m[32m{[m
+[32m+[m	[32mprintf("TWO!\n");[m
+[32m+[m[32m}[m

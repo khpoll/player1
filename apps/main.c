@@ -8,4 +8,7 @@ int main()
 	foo2();
 	printf("Yo!!\n");
 	foo1();
+	foo1();
+	foo1();
+	foo1();
 }

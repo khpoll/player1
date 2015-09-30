@@ -2,5 +2,5 @@
 
 void foo1()
 {
-	printf("ONE!!\n");
+	printf("ONE ONE ONE ONE\n");
 }
